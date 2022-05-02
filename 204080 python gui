@@ -1,0 +1,239 @@
+
+import tkinter 
+from tkinter import *
+import random
+from tkinter import messagebox
+
+#move characters up function
+def right():
+    print('right')
+    global rows, columns, button_values, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_10, button_11, button_12, button_13, button_14, button_15, button_16
+    print(button_values)
+    global row1, row2, row3, row4
+    print(row1)
+    print(row2)
+    print(row3)
+    print(row4)
+    zero_removed = 0
+    for v in range(len(row1)):
+        if row1[v] == 0:
+            row1.pop(v)
+            row1.insert(0, 0)
+    print(row1)
+    zero_removed = 0
+    for v in range(len(row2)):
+        if row2[v] == 0:
+            row2.pop(v)
+            row2.insert(0, 0)
+    print(row2)
+    zero_removed = 0
+    for v in range(len(row3)):
+        if row3[v] == 0:
+            row3.pop(v)
+            row3.insert(0, 0)
+    print(row3)  
+    zero_removed = 0
+    for v in range(len(row4)):
+        if row4[v] == 0:
+            row4.pop(v)
+            row4.insert(0, 0)
+    print(row4)
+    button_values = []
+    for x in range(4):
+        button_values.append(row1[x])
+    for x in range(4):
+        button_values.append(row2[x])
+    for x in range(4):
+        button_values.append(row3[x])
+    for x in range(4):
+        button_values.append(row4[x])
+    
+    button_1.config(text=str(row1[0]))
+    button_2.config(text=str(row1[1]))
+    button_3.config(text=str(row1[2]))
+    button_4.config(text=str(row1[3]))
+    button_5.config(text=str(row2[0]))
+    button_6.config(text=str(row2[1]))
+    button_7.config(text=str(row2[2]))
+    button_8.config(text=str(row2[3]))
+    button_9.config(text=str(row3[0]))
+    button_10.config(text=str(row3[1]))
+    button_11.config(text=str(row3[2]))
+    button_12.config(text=str(row3[3]))
+    button_13.config(text=str(row4[0]))
+    button_14.config(text=str(row4[1]))
+    button_15.config(text=str(row4[2]))
+    button_16.config(text=str(row4[3]))
+        
+
+
+
+
+
+
+#function to move characters left
+def left():
+    print('left')
+    global rows, columns, button_values, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_10, button_11, button_12, button_13, button_14, button_15, button_16
+    print(button_values)
+    global row1, row2, row3, row4
+    zero_removed = 0
+    for v in range(len(row1)):
+        if row1[v] == 0:
+            row1.pop(v)
+            row1.insert(3, 0)
+    print(row1)
+    zero_removed = 0
+    for v in range(len(row2)):
+        if row2[v] == 0:
+            row2.pop(v)
+            row2.insert(3, 0)
+    print(row2)
+    zero_removed = 0
+    for v in range(len(row3)):
+        if row3[v] == 0:
+            row3.pop(v)
+            row3.insert(3, 0)
+    print(row3)
+    zero_removed = 0
+    for v in range(len(row4)):
+        if row4[v] == 0:
+            row4.pop(v)
+            row4.insert(3, 0)
+    print(row4)
+    button_values = []
+    for x in range(4):
+        button_values.append(row1[x])
+    for x in range(4):
+        button_values.append(row2[x])
+    for x in range(4):
+        button_values.append(row3[x])
+    for x in range(4):
+        button_values.append(row4[x])
+
+    button_1.config(text=str(row1[0]))
+    button_2.config(text=str(row1[1]))
+    button_3.config(text=str(row1[2]))
+    button_4.config(text=str(row1[3]))
+    button_5.config(text=str(row2[0]))
+    button_6.config(text=str(row2[1]))
+    button_7.config(text=str(row2[2]))
+    button_8.config(text=str(row2[3]))
+    button_9.config(text=str(row3[0]))
+    button_10.config(text=str(row3[1]))
+    button_11.config(text=str(row3[2]))
+    button_12.config(text=str(row3[3]))
+    button_13.config(text=str(row4[0]))
+    button_14.config(text=str(row4[1]))
+    button_15.config(text=str(row4[2]))
+    button_16.config(text=str(row4[3]))
+def up():
+    print('up')
+#function to move characters down
+def down():
+    print('down')
+
+def quit_display():
+    messagebox.showinfo("Quit", "You have given up")
+    print('User has given up')
+    root.destroy()
+    frame.destroy()
+#title and frames are created
+frame = Tk()
+root = Tk()
+frame.title('2040 Game')
+root.title('2040 Game by Tayler Gabbott-Pym')
+root.geometry('190x110')
+#column rows and button values are made
+columns = 4
+rows = 4
+score = 0
+button_coordinates = 0
+#Creating the text of score to be outputted in the root window
+score_text_output = str('Your score is: ') + str(score)
+score_output = Label(root, text=score_text_output).grid(column=3, row=1)
+#Creating buttons to move the numbers around on the root window
+up_button = Button(root, text="Up", command=up).grid(column=3, row=2)
+left_button = Button(root, text="Left", command=left).grid(column=2, row=4)
+right_button = Button(root, text="Right", command=right).grid(column=4, row=4)
+down_button = Button(root, text="Down", command=down).grid(column=3, row=5)
+#create give up button 
+Button(root, text="Give Up", command=quit_display).grid(column=2, row=1)
+# Creating the Buttons in a for loop with dynamic variables 
+#Creating button values statring with 0 list
+button_values = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+#button_values = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+#adding the 2 start blocks in the list of zeros
+#Creating the random position to insert the 2
+position = 0
+for i in range(2):
+    position = random.randrange(1,16)
+    button_values.pop(position)
+print(button_values)
+position_2 = random.randrange(1,16)
+row1 = []
+row2 = []
+row3 = []
+row4 = []
+for i in range(4):
+    if i == position or i == position_2:
+        row1.append(2)
+    else:
+        row1.append(0)
+for i in range(4):
+    if (4 + i) == position or (4 + i) == position_2:
+        row2.append(2)
+    else:
+        row2.append(0)
+for i in range(4):
+    if (8 + i) == position or (4 + i) == position_2:
+        row3.append(2)
+    else:
+        row3.append(0)
+for i in range(4):
+    if (12 + i) == position or (4 + i) == position_2:
+        row4.append(2)
+    else:
+        row4.append(0)
+
+    
+button_1 = Label(frame, text=row1[0], height=5, width=5)
+button_1.grid(row=0, column=0)
+button_2 = Label(frame, text=row1[1], height=5, width=5)
+button_2.grid(row=0, column=1)
+button_3 = Label(frame, text=row1[2], height=5, width=5)
+button_3.grid(row=0, column=2)
+button_4 = Label(frame, text=row1[3], height=5, width=5)
+button_4.grid(row=0, column=4)
+button_5 = Label(frame, text=row2[0], height=5, width=5)
+button_5.grid(row=1, column=0)
+button_6 = Label(frame, text=row2[1], height=5, width=5)
+button_6.grid(row=1, column=1)
+button_7 = Label(frame, text=row2[2], height=5, width=5)
+button_7.grid(row=1, column=2)
+button_8 = Label(frame, text=row2[3], height=5, width=5)
+button_8.grid(row=1, column=4)
+button_9 = Label(frame, text=row3[0], height=5, width=5)
+button_9.grid(row=2, column=0)
+button_10 = Label(frame, text=row3[1], height=5, width=5)
+button_10.grid(row=2, column=1)
+button_11 = Label(frame, text=row3[2], height=5, width=5)
+button_11.grid(row=2, column=2)
+button_12 = Label(frame, text=row3[3], height=5, width=5)
+button_12.grid(row=2, column=4)
+button_13 = Label(frame, text=row4[0], height=5, width=5)
+button_13.grid(row=3, column=0)
+button_14 = Label(frame, text=row4[1], height=5, width=5)
+button_14.grid(row=3, column=1)
+button_15 = Label(frame, text=row4[2], height=5, width=5)
+button_15.grid(row=3, column=2)
+button_16= Label(frame, text=row4[3], height=5, width=5)
+button_16.grid(row=3, column=4)
+
+print(row1)
+print(row2)
+print(row3)
+print(row4)
+
+root.mainloop()
+frame.mainloop()
