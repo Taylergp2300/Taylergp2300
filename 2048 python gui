@@ -1,0 +1,542 @@
+
+import tkinter
+from tkinter import *
+import random
+from tkinter import messagebox
+
+#move characters up function
+
+
+def right():
+    print('right')
+    global rows, columns, button_values, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_10, button_11, button_12, button_13, button_14, button_15, button_16
+    print(button_values)
+    global row1, row2, row3, row4
+    print(row1)
+    print(row2)
+    print(row3)
+    print(row4)
+    for i in range(4):
+        zero_removed = 0
+        for x in range(4):
+            for v in range(len(row1)):
+                if row1[v] == 0:
+                    row1.pop(v)
+                    row1.insert(0, 0)
+            print(row1)
+            zero_removed = 0
+            for v in range(len(row2)):
+                if row2[v] == 0:
+                    row2.pop(v)
+                    row2.insert(0, 0)
+            print(row2)
+            zero_removed = 0
+            for v in range(len(row3)):
+                if row3[v] == 0:
+                    row3.pop(v)
+                    row3.insert(0, 0)
+            print(row3)
+            zero_removed = 0
+            for v in range(len(row4)):
+                if row4[v] == 0:
+                    row4.pop(v)
+                    row4.insert(0, 0)
+            print(row4)
+            button_values = []
+            for x in range(4):
+                button_values.append(row1[x])
+            for x in range(4):
+                button_values.append(row2[x])
+            for x in range(4):
+                button_values.append(row3[x])
+            for x in range(4):
+                button_values.append(row4[x])
+            row_name_list = [row1, row2, row3, row4]
+            for r in range(4):
+                if row_name_list[r][2] == row_name_list[r][3]:
+                    number1 = row_name_list[r][3]
+                    number2 = row_name_list[r][2]
+                    row_name_list[r].pop(3)
+                    row_name_list[r].insert(3, number1+number2)
+                    row_name_list[r].pop(2)
+                    row_name_list[r].insert(2, 0)
+
+    button_names = [button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8,
+                    button_9, button_10, button_11, button_12, button_13, button_14, button_15, button_16]
+    row_names = [row1, row2, row3, row4]
+    finding_place = True
+    while finding_place == True:
+        one_or_four = random.randrange(0,1)
+        if one_or_four == 0:
+            # 2
+            position_to_place = random.randrange(0,16)
+            if position_to_place >= 0 and position_to_place <= 3:
+                if row1[position_to_place] == 0:
+                    row1.pop(position_to_place)
+                    row1.insert(position_to_place, 2)
+                    finding_place = False
+                else:
+                    finding_place = True
+            if position_to_place >= 4 and position_to_place <= 7:
+                if row2[position_to_place - 4] == 0:
+                    row2.pop(position_to_place - 4)
+                    row2.insert(position_to_place - 4, 2)
+                    finding_place = False
+                else:
+                    finding_place = True
+            if position_to_place >= 8 and position_to_place <= 11:
+                if row3[position_to_place - 8] == 0:
+                    row3.pop(position_to_place - 8)
+                    row3.insert(position_to_place - 8, 2)
+                    finding_place = False
+                else:
+                    finding_place = True
+            if position_to_place >= 12 and position_to_place <= 15:
+                if row4[position_to_place - 12] == 0:
+                    row4.pop(position_to_place - 12)
+                    row4.insert(position_to_place - 12, 2)
+                    finding_place = False
+                else:
+                    finding_place = True
+            
+        if one_or_four == 1:
+            #4
+            position_to_place = random.randrange(0,16)
+            position_to_place = random.randrange(0, 16)
+            if position_to_place >= 0 and position_to_place <= 3:
+                if row1[position_to_place] == 0:
+                    row1.pop(position_to_place)
+                    row1.insert(position_to_place, 4)
+                    finding_place = False
+                else:
+                    finding_place = True
+            if position_to_place >= 4 and position_to_place <= 7:
+                if row2[position_to_place - 4] == 0:
+                    row2.pop(position_to_place - 4)
+                    row2.insert(position_to_place - 4, 4)
+                    finding_place = False
+                else:
+                    finding_place = True
+            if position_to_place >= 8 and position_to_place <= 11:
+                if row3[position_to_place - 8] == 0:
+                    row3.pop(position_to_place - 8)
+                    row3.insert(position_to_place - 8, 4) 
+                    finding_place = False
+                else:
+                    finding_place = True
+            if position_to_place >= 12 and position_to_place <= 15:
+                if row4[position_to_place - 12] == 0:
+                    row4.pop(position_to_place - 12)
+                    row4.insert(position_to_place - 12, 4)
+                    finding_place = False
+                else:
+                    finding_place = True
+
+
+    for b in range(4):
+        for c in range(4):
+            current_button = (b * 4) + c
+            button_names[current_button].config(text=(row_names[b][c]))
+
+
+#function to move characters left
+def left():
+    print('left')
+    global rows, columns, button_values, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_10, button_11, button_12, button_13, button_14, button_15, button_16
+    print(button_values)
+    global row1, row2, row3, row4
+    for l in range(4):
+        zero_removed = 0
+        for v in range(len(row1)):
+            if row1[v-1] == 0:
+                row1.pop(v-1)
+                row1.insert(3, 0)
+        print(row1)
+        zero_removed = 0
+        for v in range(len(row2)):
+            if row2[v-1] == 0:
+                row2.pop(v-1)
+                row2.insert(3, 0)
+        print(row2)
+        zero_removed = 0
+        for v in range(len(row3)):
+            if row3[v-1] == 0:
+                row3.pop(v-1)
+                row3.insert(3, 0)
+        print(row3)
+        zero_removed = 0
+        for v in range(len(row4)):
+            if row4[v-1] == 0:
+                row4.pop(v-1)
+                row4.insert(3, 0)
+        button_15.config(text=str(row4[2]))
+        print(row4)
+        button_values = []
+        for x in range(4):
+            button_values.append(row1[x])
+        for x in range(4):
+            button_values.append(row2[x])
+        for x in range(4):
+            button_values.append(row3[x])
+        for x in range(4):
+            button_values.append(row4[x])
+        row_name_list = [row1, row2, row3, row4]
+        for r in range(4):
+            if row_name_list[r][0] == row_name_list[r][1]:
+                number1 = row_name_list[r][1]
+                number2= row_name_list[r][0]
+                row_name_list[r].pop(0)
+                row_name_list[r].insert(0, number1+number2)
+                row_name_list[r].pop(1)
+                row_name_list[r].insert(1, 0)
+    
+    row_names = [row1, row2, row3, row4]
+    finding_place = True
+    while finding_place == True:
+        one_or_four = random.randrange(0, 1)
+        if one_or_four == 0:
+            # 2
+            position_to_place = random.randrange(0, 16)
+            if position_to_place >= 0 and position_to_place <= 3:
+                if row1[position_to_place] == 0:
+                    row1.pop(position_to_place)
+                    row1.insert(position_to_place, 2)
+                    finding_place = False
+                else:
+                    finding_place = True
+            if position_to_place >= 4 and position_to_place <= 7:
+                if row2[position_to_place - 4] == 0:
+                    row2.pop(position_to_place - 4)
+                    row2.insert(position_to_place - 4, 2)
+                    finding_place = False
+                else:
+                    finding_place = True
+            if position_to_place >= 8 and position_to_place <= 11:
+                if row3[position_to_place - 8] == 0:
+                    row3.pop(position_to_place - 8)
+                    row3.insert(position_to_place - 8, 2)
+                    finding_place = False
+                else:
+                    finding_place = True
+            if position_to_place >= 12 and position_to_place <= 15:
+                if row4[position_to_place - 12] == 0:
+                    row4.pop(position_to_place - 12)
+                    row4.insert(position_to_place - 12, 2)
+                    finding_place = False
+                else:
+                    finding_place = True
+
+        if one_or_four == 1:
+            #4
+            position_to_place = random.randrange(0, 16)
+            position_to_place = random.randrange(0, 16)
+            if position_to_place >= 0 and position_to_place <= 3:
+                if row1[position_to_place] == 0:
+                    row1.pop(position_to_place)
+                    row1.insert(position_to_place, 4)
+                    finding_place = False
+                else:
+                    finding_place = True
+            if position_to_place >= 4 and position_to_place <= 7:
+                if row2[position_to_place - 4] == 0:
+                    row2.pop(position_to_place - 4)
+                    row2.insert(position_to_place - 4, 4)
+                    finding_place = False
+                else:
+                    finding_place = True
+            if position_to_place >= 8 and position_to_place <= 11:
+                if row3[position_to_place - 8] == 0:
+                    row3.pop(position_to_place - 8)
+                    row3.insert(position_to_place - 8, 4)
+                    finding_place = False
+                else:
+                    finding_place = True
+            if position_to_place >= 12 and position_to_place <= 15:
+                if row4[position_to_place - 12] == 0:
+                    row4.pop(position_to_place - 12)
+                    row4.insert(position_to_place - 12, 4)
+                    finding_place = False
+                else:
+                    finding_place = True
+
+    button_names = [button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_10, button_11, button_12, button_13, button_14, button_15, button_16]
+    row_names = [row1, row2, row3, row4]
+    for b in range(4):
+        for c in range(4):
+            current_button = (b * 4) + c
+            button_names[current_button].config(text=(row_names[b][c]))
+
+
+
+def up():
+    print('up')
+#function to move characters down
+    global row1, row2, row3, row4
+    column1 = []
+    column2 = []
+    column3 = []
+    column4 = []
+    column_names = [column1, column2, column3, column4]
+    row_names = [row1, row2, row3, row4]
+    for z in range(4):
+        for i in range(4):
+            column_names[z].append((row_names[i][z]))
+    print(column1)
+    print(column2)
+    print(column3)
+    print(column4)
+#    for f in range(4):
+#        for c in range(4):
+#            if column_names[f][c-1] == 0:
+#                column_names[f].pop(c-1)
+#                column_names[f].append(0)
+    for x in range(4):
+        for i in range(4):
+            if column1[i] == 0:
+                column1.pop(i)
+                column1.append(0)
+        for i in range(4):
+            if column2[i] == 0:
+                column2.pop(i)
+                column2.append(0)
+        for i in range(4):
+            if column3[i] == 0:
+                column3.pop(i)
+                column3.append(0)
+        for i in range(4):
+            if column4[i] == 0:
+                column4.pop(i)
+                column4.append(0)
+        print(column1)
+        print(column2)
+        print(column3)
+        print(column4)
+#        columns = [column1, column2, column3, column4]
+#        for r in range(len(columns)):
+#            for rr in range(4):
+#                if columns[r][rr-1] == columns[r][rr]:
+#                    number1 = columns[r][rr-1]
+#                    number2 = columns[r][rr]
+#                    columns[r].pop(0)
+#                    columns[r].insert(0, number1+number2)
+#                    columns[r].pop(1)
+#                    columns[r].insert(3, 0)
+        column_names = [column1, column2, column3, column4]
+        for y in range(4):
+            if column_names[y][0] == column_names[y][1]:
+                number1 = column_names[y][0]
+                number2 = column_names[y][1]
+                column_names[y].pop(0)
+                column_names[y].insert(0, number1+number2)
+                column_names[y].insert(1, 0)
+                column_names[y].pop(2)
+
+            
+        row1 = []
+        row2 = []
+        row3 = []
+        row4 = []
+        row_names = [row1, row2, row3, row4]
+        for g in range(4):
+            row_names[g].append(column1[g])
+            row_names[g].append(column2[g])
+            row_names[g].append(column3[g])
+            row_names[g].append(column4[g])
+        print(row1)
+        print(row2)
+        print(row3)
+        print(row4)
+        button_names = [button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8,
+                        button_9, button_10, button_11, button_12, button_13, button_14, button_15, button_16]
+        row_names = [row1, row2, row3, row4]
+
+        for b in range(4):
+            for c in range(4):
+                current_button = (b * 4) + c    
+                button_names[current_button].config(text=(row_names[b][c]))
+        
+
+def down():
+    print('down')
+    global row1, row2, row3, row4
+    column1 = []
+    column2 = []
+    column3 = []
+    column4 = []
+    column_names = [column1, column2, column3, column4]
+    row_names = [row1, row2, row3, row4]
+    for z in range(4):
+        for i in range(4):
+            column_names[z].append((row_names[i][z]))
+    print(column1)
+    print(column2)
+    print(column3)
+    print(column4)
+#    for f in range(4):
+#        for c in range(4):
+#            if column_names[f][c-1] == 0:
+#                column_names[f].pop(c-1)
+#                column_names[f].append(0)
+    for x in range(4):
+        for i in range(4):
+            if column1[i] == 0:
+                column1.pop(i)
+                column1.insert(0, 0)
+        for i in range(4):
+            if column2[i] == 0:
+                column2.pop(i)
+                column2.insert(0, 0)
+        for i in range(4):
+            if column3[i] == 0:
+                column3.pop(i)
+                column3.insert(0, 0)
+        for i in range(4):
+            if column4[i] == 0:
+                column4.pop(i)
+                column4.insert(0, 0)
+        
+
+
+
+        column_names = [column1, column2, column3, column4]
+        for y in range(4):
+            if column_names[y][3] == column_names[y][2]:
+                number1 = column_names[y][3]
+                number2 = column_names[y][2]
+                column_names[y].pop(3)
+                column_names[y].insert(3, number1+number2)
+                column_names[y].insert(3, 0)
+                column_names[y].pop(2)
+            
+
+
+
+        print(column1)
+        print(column2)
+        print(column3)
+        print(column4)
+        row1 = []
+        row2 = []
+        row3 = []
+        row4 = []
+        row_names = [row1, row2, row3, row4]
+        for g in range(4):
+            row_names[g].append(column1[g])
+            row_names[g].append(column2[g])
+            row_names[g].append(column3[g])
+            row_names[g].append(column4[g])
+        print(row1)
+        print(row2)
+        print(row3)
+        print(row4)
+        button_names = [button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8,
+                        button_9, button_10, button_11, button_12, button_13, button_14, button_15, button_16]
+        for b in range(4):
+            for c in range(4):
+                current_button = (b * 4) + c
+                button_names[current_button].config(text=(row_names[b][c]))
+
+def quit_display():
+    messagebox.showinfo("Quit", "You have given up")
+    print('User has given up')
+    root.destroy()
+    frame.destroy()
+
+
+#title and frames are created
+frame = Tk()
+root = Tk()
+frame.title('2040 Game')
+root.title('2040 Game by Tayler Gabbott-Pym')
+root.geometry('190x110')
+#column rows and button values are made
+columns = 4
+rows = 4
+score = 0
+button_coordinates = 0
+#Creating the text of score to be outputted in the root window
+score_text_output = str('Your score is: ') + str(score)
+score_output = Label(root, text=score_text_output).grid(column=3, row=1)
+#Creating buttons to move the numbers around on the root window
+up_button = Button(root, text="Up", command=up).grid(column=3, row=2)
+left_button = Button(root, text="Left", command=left).grid(column=2, row=4)
+right_button = Button(root, text="Right", command=right).grid(column=4, row=4)
+down_button = Button(root, text="Down", command=down).grid(column=3, row=5)
+#create give up button
+Button(root, text="Give Up", command=quit_display).grid(column=2, row=1)
+# Creating the Buttons in a for loop with dynamic variables
+#Creating button values statring with 0 list
+#button_values = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+button_values = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+#adding the 2 start blocks in the list of zeros
+#Creating the random position to insert the 2
+row1 = []
+row2 = []
+row3 = []
+row4 = []
+position = 0
+#for i in range(2):
+#    position = random.randrange(1, 16)
+#    button_values.pop(position)
+#print(button_values)
+finding = True
+while finding == True:
+    position = random.randrange(1, 16)
+    position_2 = random.randrange(1, 16)
+    if position_2 != position:
+        finding = False
+row_names = [row1, row2, row3, row4]
+for c in range(4):
+    for b in range(4):
+        if ((c * 4) + b) == position or ((c * 4) + b) == position_2:
+            row_names[c].append(2)
+        else:
+            row_names[c].append(0)
+
+
+
+
+
+
+
+button_1 = Label(frame, text=row1[0], height=8, width=8)
+button_1.grid(row=0, column=0)
+button_2 = Label(frame, text=row1[1], height=8, width=8)
+button_2.grid(row=0, column=1)
+button_3 = Label(frame, text=row1[2], height=8, width=8)
+button_3.grid(row=0, column=2)
+button_4 = Label(frame, text=row1[3], height=8, width=8)
+button_4.grid(row=0, column=4)
+button_5 = Label(frame, text=row2[0], height=8, width=8)
+button_5.grid(row=1, column=0)
+button_6 = Label(frame, text=row2[1], height=8, width=8)
+button_6.grid(row=1, column=1)
+button_7 = Label(frame, text=row2[2], height=8, width=8)
+button_7.grid(row=1, column=2)
+button_8 = Label(frame, text=row2[3], height=8, width=8)
+button_8.grid(row=1, column=4)
+button_9 = Label(frame, text=row3[0], height=8, width=8)
+button_9.grid(row=2, column=0)
+button_10 = Label(frame, text=row3[1], height=8, width=8)
+button_10.grid(row=2, column=1)
+button_11 = Label(frame, text=row3[2], height=8, width=8)
+button_11.grid(row=2, column=2)
+button_12 = Label(frame, text=row3[3], height=8, width=8)
+button_12.grid(row=2, column=4)
+button_13 = Label(frame, text=row4[0], height=8, width=8)
+button_13.grid(row=3, column=0)
+button_14 = Label(frame, text=row4[1], height=8, width=8)
+button_14.grid(row=3, column=1)
+button_15 = Label(frame, text=row4[2], height=8, width=8)
+button_15.grid(row=3, column=2)
+button_16 = Label(frame, text=row4[3], height=8, width=8)
+button_16.grid(row=3, column=4)
+
+print(row1)
+print(row2)
+print(row3)
+print(row4)
+
+root.mainloop()
+frame.mainloop()
+
