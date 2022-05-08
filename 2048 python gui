@@ -751,7 +751,7 @@ frame = Tk()
 root = Tk()
 frame.title('2048 Game')
 root.title('2048 Game by Tayler Gabbott-Pym')
-root.geometry('145x110')
+root.geometry('190x110')
 #column rows and button values are made
 columns = 4
 rows = 4
