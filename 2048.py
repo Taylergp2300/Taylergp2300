@@ -38,9 +38,7 @@ def smash_left():
                 list_of_numbers[j-1].append(0)
 
     num_of_twos = 1
-    print('####')
     print(list_of_numbers)
-    print('####')
     insert_twos(possible_insert_array, list_of_numbers, num_of_twos)
     for i in range(4):
         for j in range(4):
