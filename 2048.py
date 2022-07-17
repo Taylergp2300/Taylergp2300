@@ -1,7 +1,6 @@
 import random
 import tkinter as tk
 from tkinter import *
-#wizard was here
 list_of_numbers = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
 possible_insert_array = []
 def insert_twos(possible_insert_array, list_of_numbers, num_of_twos):
@@ -20,7 +19,6 @@ def insert_twos(possible_insert_array, list_of_numbers, num_of_twos):
                 list_of_numbers[possible_insert_array[0]][possible_insert_array[1]] = 2
                 next = False
                 counter += 1
-
 def smash_left():
     global list_of_numbers
     for i in range(4):
@@ -36,19 +34,15 @@ def smash_left():
                 list_of_numbers[j-1][i-2] = multiply
                 list_of_numbers[j-1].pop(i-1)
                 list_of_numbers[j-1].append(0)
-
     num_of_twos = 1
-    print(list_of_numbers)
     insert_twos(possible_insert_array, list_of_numbers, num_of_twos)
     for i in range(4):
         for j in range(4):
             inttld = ((i)*4) + (j)
             tld = str(inttld)
             globals()['string%s' % tld].config(text=list_of_numbers[i][j])
-
 num_of_twos = 2
 insert_twos(possible_insert_array, list_of_numbers, num_of_twos)
-print(list_of_numbers)
 frame = tk.Tk()
 frame.geometry("272x328")
 frame.title("2048")
@@ -58,7 +52,6 @@ for i in range(4):
         tld = str(inttld)
         globals()['string%s' % tld] = Label(frame, text=list_of_numbers[i][j], height=4, width=5)
         globals()['string%s' % tld].grid(column=(j), row=(i))
-       
 left_button = Button(frame, height=4, width=4, text="left", command=smash_left).grid(column=(6), row=(6))
 right_button = Button(frame, height=4, width=4, text="hello").grid(column=(7), row=(7))
 frame.mainloop()
