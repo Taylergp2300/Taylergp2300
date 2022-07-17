@@ -1,6 +1,7 @@
 import random
 import tkinter as tk
 from tkinter import *
+#wizard was here
 list_of_numbers = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
 possible_insert_array = []
 def insert_twos(possible_insert_array, list_of_numbers, num_of_twos):
