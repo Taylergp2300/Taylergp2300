@@ -46,26 +46,36 @@ def smash_left():
             tld = str(inttld)
             globals()['string%s' % tld].config(text=list_of_numbers[i][j])
 
-def flip_left():
+def flip_left(x):
     global list_of_numbers
-    columns = [[],[],[],[]]
-    for i in range(4):
-        for j in range(4):
-            columns[i].append(list_of_numbers[j][i])
-    print('columns = ', columns)
-    list_of_numbers = columns
+    for q in range(x):
+        columns = [[], [], [], []]
+        for i in range(4):
+            for j in range(4):
+                columns[i].append(list_of_numbers[j][i])
+    #print('columns = ', columns)
+        list_of_numbers = columns
     smash_left()
-    columns = [[],[],[],[]]
-    for s in range(4):
-        for p in range(4):
-            columns[s].append(list_of_numbers[p][s])
+    for w in range():
+        columns = [[],[],[],[]]
+        for s in range(4):
+            for p in range(4):
+                columns[s].append(list_of_numbers[p][s])
     list_of_numbers = columns
     for i in range(4):
         for j in range(4):
             inttld = ((i)*4) + (j)
             tld = str(inttld)
             globals()['string%s' % tld].config(text=list_of_numbers[i][j])
-
+def down():
+    x = 3
+    flip_left(x)
+def up():
+    x = 1
+    flip_left(x)
+def right():
+    x = 2
+    flip_left(x)
 
 
 flip_array = [[],[],[],[]]
@@ -83,5 +93,7 @@ for i in range(4):
         globals()['string%s' % tld].grid(column=(j), row=(i))
        
 left_button = Button(frame, height=4, width=4, text="left", command=smash_left).grid(column=(6), row=(6))
-right_button = Button(frame, height=4, width=4, text="hello", command=flip_left).grid(column=(7), row=(7))
+up_button = Button(frame, height=4, width=4, text="up", command=up).grid(column=(7), row=(7))
+right_button = Button(frame, height=4, width=4, text="right", command=right).grid(column=(8), row=(8))
+down_button = Button(frame, height=4, width=4, text="down", command=down).grid(column=(9), row=(9))
 frame.mainloop()
